@@ -6,7 +6,7 @@ import '../../../../core/errors/failures.dart';
 import '../entities/todo.dart';
 
 abstract class TodoRepository {
-  FetchTodosEither fetchTodo();
+  FetchTodosEither fetchTodos();
   CreateTodoEither createTodo(Map<String, String> data);
 }
 
