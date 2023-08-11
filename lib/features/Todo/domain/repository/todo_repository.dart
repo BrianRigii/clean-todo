@@ -7,7 +7,7 @@ import '../entities/todo.dart';
 
 abstract class TodoRepository {
   FetchTodosEither fetchTodos();
-  CreateTodoEither createTodo(Map<String, String> data);
+  CreateTodoEither createTodo(Map<String, dynamic> data);
 }
 
 typedef FetchTodosEither = Future<Either<Failure, List<Todo>>>;

@@ -7,7 +7,7 @@ import '../models/Todo_model.dart';
 
 abstract class TodoRemoteDataSource {
   Future<List<TodoModel>> getTodos();
-  Future<TodoModel> postTodo(Map<String, String> data);
+  Future<TodoModel> postTodo(Map<String, dynamic> data);
 }
 
 class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
@@ -29,7 +29,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
   }
 
   @override
-  Future<TodoModel> postTodo(Map<String, String> data) async {
+  Future<TodoModel> postTodo(Map<String, dynamic> data) async {
     try {
       final response = (await dio.post('/todos', data: data)).data;
       return TodoModel.fromJson(response);

@@ -14,7 +14,7 @@ class TodoRepositoryImpl implements TodoRepository {
 
   TodoRepositoryImpl(this.remoteDataSource);
   @override
-  CreateTodoEither createTodo(Map<String, String> data) async {
+  CreateTodoEither createTodo(Map<String, dynamic> data) async {
     try {
       final todoModel = await remoteDataSource.postTodo(data);
       return Right(todoModel.toEntity());
