@@ -11,15 +11,15 @@ class TodoList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //  final failureOrTodos = ref.watch(getTodosProvider).when(
-    //         data: (todos) => AsyncValue.data(todos),
-    //         loading: () => const AsyncValue.loading(),
-    //         error: (error, stackTrace) => AsyncValue.error(error, stackTrace),
-    //       );
-
     return ref.watch(getTodosProvider).when(
-        data: (failureOrTodo) => Container(),
-        error: (error, stackTrace) => Container(),
-        loading: () => Container());
+        data: (Either<Failure, List<Todo>> data) {
+          return data.fold(
+              (Failure failure) => Text('A failure occured'),
+              (List<Todo> todos) => ListView.builder(
+                  itemCount: todos.length,
+                  itemBuilder: (context, index) => Text(todos[index].title)));
+        },
+        loading: () => Center(child: CircularProgressIndicator()),
+        error: (error, stackTrace) => Center(child: Text(error.toString())));
   }
 }
