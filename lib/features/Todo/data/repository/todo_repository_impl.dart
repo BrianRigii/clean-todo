@@ -30,16 +30,12 @@ class TodoRepositoryImpl implements TodoRepository {
   }
 
   @override
-  FetchTodosEither fetchTodos() async {
+  Future<List<Todo>> fetchTodos() async {
     try {
       final todos = await remoteDataSource.getTodos();
-      return Right(todos.map<Todo>((todo) => todo.toEntity()).toList());
+      return todos.map<Todo>((todo) => todo.toEntity()).toList();
     } catch (exception) {
-      if (exception is ServerException) return Left(ServerFailure(exception));
-      if (exception is FormatException)
-        return Left(InvalidFormatFailure(exception));
-      return Left(UnexpectedFailure('Something went wrong while fetching todos',
-          exception: exception as Exception, stackTrace: StackTrace.current));
+      rethrow;
     }
   }
 }
