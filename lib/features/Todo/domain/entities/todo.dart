@@ -7,14 +7,17 @@ class Todo {
   final TodoPriority priority;
   final bool isComplete;
   final DateTime createdAt;
-  final DateTime? updatedAt;
+  DateTime? updatedAt;
+  final bool synced;
 
-  Todo(
-      {required this.id,
-      required this.title,
-      this.description,
-      required this.priority,
-      required this.isComplete,
-      required this.createdAt,
-      this.updatedAt});
+  Todo({
+    required this.id,
+    required this.title,
+    this.description,
+    required this.priority,
+    required this.isComplete,
+    required this.createdAt,
+    this.updatedAt,
+    this.synced = false,
+  });
 }

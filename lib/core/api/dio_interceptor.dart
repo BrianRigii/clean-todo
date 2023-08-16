@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import '../utils/form_data_util.dart';
 
 class DioInterceptor extends Interceptor {
+  @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     log("REQUEST : ${options.uri.path} ${(options.data is FormData ? formDataToMap(options.data) : options.data) ?? options.queryParameters}");

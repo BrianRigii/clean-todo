@@ -13,18 +13,18 @@ class TodoScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Icons.person_3_outlined),
-              Column(
+              const Icon(Icons.person_3_outlined),
+              const Column(
                 children: [
                   Text('Hello,'),
                   Text('Mobile Team'),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               IconButton.outlined(
-                  onPressed: () {}, icon: Icon(EvaIcons.calendarOutline)),
+                  onPressed: () {}, icon: const Icon(EvaIcons.calendarOutline)),
               IconButton.outlined(
-                  onPressed: () {}, icon: Icon(EvaIcons.bellOutline)),
+                  onPressed: () {}, icon: const Icon(EvaIcons.bellOutline)),
             ],
           )
         ],

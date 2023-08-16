@@ -1,7 +1,5 @@
 import 'package:clean_todo/features/Todo/todo_priority.dart';
-
 import '../../../../core/contracts/usecase.dart';
-
 import '../repository/todo_repository.dart';
 
 class PostTodo extends UseCase<CreateTodoEither, PostTodoData> {
@@ -12,8 +10,8 @@ class PostTodo extends UseCase<CreateTodoEither, PostTodoData> {
   );
 
   @override
-  CreateTodoEither call(PostTodoData postTodoData) async {
-    return await repository.createTodo(postTodoData.toJson());
+  CreateTodoEither call(PostTodoData params) async {
+    return await repository.createTodo(params.toJson());
   }
 }
 
@@ -50,8 +48,3 @@ class PostTodoData {
         'createdAt': createdAt.toIso8601String(),
       });
 }
-
-// final postTodoProvider = FutureProvider.autoDispose
-//     .family<Either<Failure, Todo>, PostTodoData>((ref, data) async {
-//   return await PostTodo(ref.watch(todoRepositoryProvider)).call(data);
-// });

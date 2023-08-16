@@ -11,7 +11,7 @@ class TodoList extends ConsumerWidget {
         data: (todos) => ListView.builder(
             itemCount: todos.length,
             itemBuilder: (context, index) => Text(todos[index].title)),
-        loading: () => Center(child: CircularProgressIndicator()),
+        loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stackTrace) => Center(child: Text(error.toString())));
   }
 }

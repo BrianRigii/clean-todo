@@ -20,8 +20,9 @@ class TodoRepositoryImpl implements TodoRepository {
       return Right(todoModel.toEntity());
     } catch (exception) {
       if (exception is ServerException) return Left(ServerFailure(exception));
-      if (exception is FormatException)
+      if (exception is FormatException) {
         return Left(InvalidFormatFailure(exception));
+      }
       return Left(UnexpectedFailure(
           'Something went wrong while creating a todo',
           exception: exception as Exception,

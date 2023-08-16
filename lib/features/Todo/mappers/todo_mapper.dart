@@ -1,4 +1,4 @@
-import 'package:clean_todo/features/Todo/data/models/Todo_model.dart';
+import 'package:clean_todo/features/Todo/data/models/todo_model.dart';
 
 import '../domain/entities/todo.dart';
 

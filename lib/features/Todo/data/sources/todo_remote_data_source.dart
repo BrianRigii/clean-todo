@@ -3,7 +3,7 @@ import 'package:clean_todo/core/errors/exceptions.dart';
 import 'package:dio/dio.dart';
 import 'package:riverpod/riverpod.dart';
 
-import '../models/Todo_model.dart';
+import '../models/todo_model.dart';
 
 abstract class TodoRemoteDataSource {
   Future<List<TodoModel>> getTodos();
@@ -21,8 +21,9 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
       final response = (await dio.get('/todos')).data;
       return response.map((e) => TodoModel.fromJson(e)).toList();
     } catch (exception) {
-      if (exception is DioException)
+      if (exception is DioException) {
         throw ServerException.fromDioException(exception);
+      }
 
       rethrow;
     }
@@ -34,8 +35,9 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
       final response = (await dio.post('/todos', data: data)).data;
       return TodoModel.fromJson(response);
     } catch (exception) {
-      if (exception is DioException)
+      if (exception is DioException) {
         throw ServerException.fromDioException(exception);
+      }
 
       rethrow;
     }
