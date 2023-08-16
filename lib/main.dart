@@ -1,3 +1,4 @@
+import 'package:clean_todo/core/utils/state_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,8 +13,11 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp.router(
-      routerConfig: ref.watch(routerProvider),
+    return ProviderScope(
+      observers: const [StateLogger()],
+      child: MaterialApp.router(
+        routerConfig: ref.watch(routerProvider),
+      ),
     );
   }
 }
