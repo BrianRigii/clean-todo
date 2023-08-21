@@ -15,8 +15,14 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ProviderScope(
       observers: const [StateLogger()],
-      child: MaterialApp.router(
-        routerConfig: ref.watch(routerProvider),
+      child: MaterialApp(
+        title: 'Clean Todo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const Scaffold(
+          body: Text('Lolo'),
+        ),
       ),
     );
   }
