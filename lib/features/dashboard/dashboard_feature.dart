@@ -8,6 +8,7 @@ class DashBoardFeature extends Feature {
   @override
   List<RouteBase> get routes => [
         StatefulShellRoute.indexedStack(
+            builder: (context, state, navigatonShell) => const HomeScreen(),
             parentNavigatorKey: _dashBoardBottomNavKey,
             branches: [
               StatefulShellBranch(
