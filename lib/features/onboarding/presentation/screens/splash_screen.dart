@@ -1,4 +1,4 @@
-import 'package:clean_todo/features/dashboard/presentation/home_screen.dart';
+import 'package:clean_todo/features/auth/presentation/screens/auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _init() async {
     await Future.delayed(const Duration(seconds: 2));
-    if (mounted) context.pushReplacement(HomeScreen.path);
+    if (mounted) context.pushReplacement(AuthScreen.path);
   }
 
   @override

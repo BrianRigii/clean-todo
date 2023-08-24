@@ -1,7 +1,7 @@
+import 'package:clean_todo/core/configs/theme.dart';
 import 'package:clean_todo/core/routing/go_router.dart';
 import 'package:clean_todo/core/supabase/supabase_client.dart';
 import 'package:clean_todo/core/utils/state_logger.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,6 +17,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
+      theme: lightTheme,
       routerConfig: ref.watch(routerProvider),
     );
   }
