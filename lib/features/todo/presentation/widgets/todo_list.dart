@@ -1,4 +1,4 @@
-import 'package:clean_todo/features/Todo/domain/usecases/get_todos.dart';
+import 'package:clean_todo/features/todo/domain/usecases/get_todos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

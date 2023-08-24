@@ -1,6 +1,5 @@
 import 'package:clean_todo/core/contracts/usecase.dart';
-
-import 'package:clean_todo/features/Todo/domain/repository/todo_repository.dart';
+import 'package:clean_todo/features/todo/domain/repository/todo_repository.dart';
 import 'package:riverpod/riverpod.dart';
 
 import '../../data/repository/todo_repository_impl.dart';

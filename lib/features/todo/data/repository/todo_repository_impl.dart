@@ -1,9 +1,9 @@
 import 'package:clean_todo/core/errors/exceptions.dart';
 import 'package:clean_todo/core/errors/failures.dart';
-import 'package:clean_todo/features/Todo/data/sources/todo_remote_data_source.dart';
-import 'package:clean_todo/features/Todo/domain/entities/todo.dart';
-import 'package:clean_todo/features/Todo/domain/repository/todo_repository.dart';
-import 'package:clean_todo/features/Todo/mappers/todo_mapper.dart';
+import 'package:clean_todo/features/todo/data/sources/todo_remote_data_source.dart';
+import 'package:clean_todo/features/todo/domain/entities/todo.dart';
+import 'package:clean_todo/features/todo/domain/repository/todo_repository.dart';
+import 'package:clean_todo/features/todo/mappers/todo_mapper.dart';
 import 'package:riverpod/riverpod.dart';
 
 import '../../../../core/either/either.dart';

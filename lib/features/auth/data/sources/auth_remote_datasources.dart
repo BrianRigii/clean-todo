@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:clean_todo/core/supabase/supabase_client.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
@@ -16,6 +18,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<User> login(Map<String, dynamic> params) async {
     try {
+      log('logging in');
       final response = await supabaseClient.auth
           .signUp(email: params['email'], password: params['password']);
       return response.user!;

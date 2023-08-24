@@ -1,4 +1,4 @@
-import 'package:clean_todo/features/Todo/todo_priority.dart';
+import 'package:clean_todo/features/todo/todo_priority.dart';
 
 class TodoModel {
   final String id;

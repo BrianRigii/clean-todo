@@ -1,4 +1,5 @@
-import 'package:clean_todo/features/Todo/todo_priority.dart';
+import 'package:clean_todo/features/todo/todo_priority.dart';
+
 import '../../../../core/contracts/usecase.dart';
 import '../repository/todo_repository.dart';
 

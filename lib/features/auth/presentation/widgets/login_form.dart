@@ -1,3 +1,5 @@
+import 'package:clean_todo/features/auth/domain/usecases/login.dart';
+import 'package:clean_todo/features/auth/presentation/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -37,6 +39,11 @@ class _LoginFormState extends ConsumerState<LoginForm> {
 
   void loginBtnFn() {
     if (!_formKey.currentState!.validate()) return;
+    LoginParams loginParams = LoginParams(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    ref.read(authControllerProvider(loginParams)).onlogin();
   }
 
   @override
