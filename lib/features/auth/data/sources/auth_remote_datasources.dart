@@ -3,8 +3,8 @@ import 'package:riverpod/riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 
 abstract class AuthRemoteDataSource {
-  Future<User> login(String email, String password);
-  Future<User> signUp(String email, String password);
+  Future<User> login(Map<String, dynamic> params);
+  Future<User> signUp(Map<String, dynamic> params);
   Stream<AuthState> onAuthStateChange();
 }
 
@@ -14,10 +14,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   AuthRemoteDataSourceImpl({required this.supabaseClient});
 
   @override
-  Future<User> login(String email, String password) async {
+  Future<User> login(Map<String, dynamic> params) async {
     try {
-      final response =
-          await supabaseClient.auth.signUp(email: email, password: password);
+      final response = await supabaseClient.auth
+          .signUp(email: params['email'], password: params['password']);
       return response.user!;
     } catch (e) {
       rethrow;
@@ -25,10 +25,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<User> signUp(String email, String password) async {
+  Future<User> signUp(Map<String, dynamic> params) async {
     try {
-      final response =
-          await supabaseClient.auth.signUp(email: email, password: password);
+      final response = await supabaseClient.auth
+          .signUp(email: params['email'], password: params['password']);
       return response.user!;
     } catch (e) {
       rethrow;

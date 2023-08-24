@@ -10,9 +10,10 @@ class InvalidFormatFailure extends Failure {
 }
 
 class ServerFailure extends Failure {
-  final ServerException serverException;
+  final ServerException? serverException;
+  final String message;
 
-  ServerFailure(this.serverException);
+  ServerFailure({this.serverException, required this.message});
 }
 
 class UnexpectedFailure extends Failure {

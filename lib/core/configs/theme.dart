@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 ThemeData get lightTheme => ThemeData(
       colorScheme: const ColorScheme.light(
         primary: Color.fromRGBO(48, 132, 254, 1),
-        secondary: Color.fromRGBO(233, 236, 245, 1),
+        secondary: Color.fromRGBO(251, 215, 162, 1),
       ),
       visualDensity: VisualDensity.adaptivePlatformDensity,
       useMaterial3: true,

@@ -1,6 +1,5 @@
 import 'package:clean_todo/core/errors/exceptions.dart';
 import 'package:clean_todo/core/errors/failures.dart';
-
 import 'package:clean_todo/features/Todo/data/sources/todo_remote_data_source.dart';
 import 'package:clean_todo/features/Todo/domain/entities/todo.dart';
 import 'package:clean_todo/features/Todo/domain/repository/todo_repository.dart';
@@ -19,7 +18,9 @@ class TodoRepositoryImpl implements TodoRepository {
       final todoModel = await remoteDataSource.postTodo(data);
       return Right(todoModel.toEntity());
     } catch (exception) {
-      if (exception is ServerException) return Left(ServerFailure(exception));
+      if (exception is ServerException) {
+        return Left(ServerFailure(message: exception.message));
+      }
       if (exception is FormatException) {
         return Left(InvalidFormatFailure(exception));
       }
