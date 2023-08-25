@@ -1,7 +1,9 @@
 import 'package:clean_todo/features/auth/domain/usecases/login.dart';
 import 'package:clean_todo/features/auth/presentation/controllers/auth_controller.dart';
+import 'package:clean_todo/features/dashboard/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginForm extends ConsumerStatefulWidget {
   const LoginForm({super.key});
@@ -46,11 +48,20 @@ class _LoginFormState extends ConsumerState<LoginForm> {
     ref.watch(authControllerProvider.notifier).onlogin(loginParams);
   }
 
+  void signInWithOtp() {
+    if (!_formKey.currentState!.validate()) return;
+    LoginParams loginParams = LoginParams(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    ref.watch(authControllerProvider.notifier).signUpWithOtp(loginParams.email);
+  }
+
   @override
   Widget build(BuildContext context) {
     ref.listen<AuthState>(authControllerProvider, (state, next) {
       if (next == AuthState.loggedIn) {
-        debugPrint('Logged In');
+        context.go(HomeScreen.path);
       }
     });
     return Form(
