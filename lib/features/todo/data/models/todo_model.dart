@@ -8,6 +8,8 @@ class TodoModel {
   final bool isComplete;
   final DateTime createdAt;
   final DateTime? updatedAt;
+  final int serverId;
+  bool synced;
 
   TodoModel(
       {required this.id,
@@ -16,6 +18,8 @@ class TodoModel {
       required this.priority,
       this.isComplete = false,
       required this.createdAt,
+      required this.serverId,
+      this.synced = false,
       this.updatedAt});
 
   factory TodoModel.fromJson(json) {
@@ -30,6 +34,8 @@ class TodoModel {
             ? DateTime.parse(json['updated_at'])
             : null,
         priority: TodoPriority.values[json['priority']],
+        synced: true,
+        serverId: json['id'],
       );
     } catch (e) {
       throw FormatException('Error parsing TodoModel from json, $e', json);

@@ -43,11 +43,16 @@ class _LoginFormState extends ConsumerState<LoginForm> {
       email: _emailController.text,
       password: _passwordController.text,
     );
-    ref.read(authControllerProvider(loginParams)).onlogin();
+    ref.watch(authControllerProvider.notifier).onlogin(loginParams);
   }
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<AuthState>(authControllerProvider, (state, next) {
+      if (next == AuthState.loggedIn) {
+        debugPrint('Logged In');
+      }
+    });
     return Form(
         key: _formKey,
         child: Column(
