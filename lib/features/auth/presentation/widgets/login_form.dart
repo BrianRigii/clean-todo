@@ -60,7 +60,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
           children: [
             const Text('Clean Todo'),
             const SizedBox(height: 4),
-            const Text('Productivity Redifined'),
+            const Text('Productivity Redefined'),
             const SizedBox(height: 8),
             TextFormField(
               controller: _emailController,

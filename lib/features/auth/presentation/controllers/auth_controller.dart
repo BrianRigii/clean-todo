@@ -14,6 +14,10 @@ class AuthController extends StateNotifier<AuthState> {
       (user) => state = AuthState.loggedIn,
     );
   }
+
+  Future<void> signUpWithOtp(String params) {
+    throw UnimplementedError();
+  }
 }
 
 final authControllerProvider =

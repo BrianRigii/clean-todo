@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 abstract class AuthRemoteDataSource {
   Future<User> login(Map<String, dynamic> params);
   Future<User> signUp(Map<String, dynamic> params);
+  Future signInWithOtp(String params);
   Stream<AuthState> onAuthStateChange();
 }
 
@@ -19,6 +20,16 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       final response = await supabaseClient.auth.signInWithPassword(
           email: params['email'], password: params['password']);
       return response.user!;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> signInWithOtp(String email) async {
+    try {
+      await supabaseClient.auth.signInWithOtp(email: email);
+      return;
     } catch (e) {
       rethrow;
     }

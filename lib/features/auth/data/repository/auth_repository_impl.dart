@@ -29,6 +29,11 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<User> signUp(Map<String, dynamic> params) {
     return _remoteDataSource.signUp(params);
   }
+
+  @override
+  Future signInWithOtp(String params) {
+    return _remoteDataSource.signInWithOtp(params);
+  }
 }
 
 final authRepositoryProvider = Provider.autoDispose<AuthRepository>((ref) =>

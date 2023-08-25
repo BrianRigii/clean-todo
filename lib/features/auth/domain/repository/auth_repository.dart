@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 abstract class AuthRepository {
   LoginEither login(Map<String, dynamic> params);
   Future<User> signUp(Map<String, dynamic> params);
+  Future signInWithOtp(String params);
   Stream<AuthState> onAuthStateChange();
 }
 
