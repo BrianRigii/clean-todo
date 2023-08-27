@@ -1,4 +1,5 @@
 import 'package:clean_todo/features/dashboard/presentation/widgets/home_app_bar.dart';
+import 'package:clean_todo/features/dashboard/presentation/widgets/home_content.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,14 +8,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0).copyWith(top: 32),
+          child: const Column(
             children: [
-              SizedBox(height: 16),
               HomeAppBar(),
+              Expanded(
+                child: HomeContent(),
+              )
             ],
           ),
         ),
