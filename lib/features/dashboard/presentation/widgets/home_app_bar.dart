@@ -10,7 +10,7 @@ class HomeAppBar extends StatelessWidget {
         const CircleAvatar(),
         const Expanded(
             child: Column(
-          children: [Text('Hello,'), Text('')],
+          children: [Text('Hello,'), Text('John Brian')],
         )),
         IconButton.outlined(onPressed: () {}, icon: const Icon(Icons.logout))
       ],
