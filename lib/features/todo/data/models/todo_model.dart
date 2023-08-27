@@ -6,7 +6,7 @@ class TodoModel {
   final String? description;
   final TodoPriority priority;
   final bool isComplete;
-  final DateTime createdAt;
+  final DateTime entryTime;
   final DateTime? updatedAt;
   final int serverId;
   bool synced;
@@ -17,7 +17,7 @@ class TodoModel {
       this.description,
       required this.priority,
       this.isComplete = false,
-      required this.createdAt,
+      required this.entryTime,
       required this.serverId,
       this.synced = false,
       this.updatedAt});
@@ -29,7 +29,7 @@ class TodoModel {
         title: json['title'],
         description: json['description'],
         isComplete: json['isComplete'],
-        createdAt: DateTime.parse(json['created_at']),
+        entryTime: DateTime.parse(json['entry_time']),
         updatedAt: json['updated_at'] != null
             ? DateTime.parse(json['updated_at'])
             : null,

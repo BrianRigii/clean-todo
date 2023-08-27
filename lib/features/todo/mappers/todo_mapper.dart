@@ -10,7 +10,7 @@ extension TodoMapper on TodoModel {
         description: description,
         priority: priority,
         isComplete: isComplete,
-        createdAt: createdAt,
+        createdAt: entryTime,
         updatedAt: updatedAt);
   }
 }
