@@ -17,15 +17,17 @@ class _HomeContentState extends ConsumerState<HomeContent> {
     ref.read(todoControllerProvider.notifier).onOpenCreateTodoForm();
   }
 
-  void _handleStates(TodoState state) {
+  void _handleStates(TodoState state) async {
     if (state is OnOpenCreateTodoFormState) {
-      showModalBottomSheet(
+      await showModalBottomSheet(
           context: context,
           builder: (context) => Padding(
                 padding: const EdgeInsets.all(8.0)
                     .copyWith(bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: const CreateTodoForm(),
               ));
+
+      ref.read(todoControllerProvider.notifier).onCloseCreateTodoForm();
     }
   }
 
