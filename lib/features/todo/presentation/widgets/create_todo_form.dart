@@ -24,11 +24,16 @@ class _CreateTodoFormState extends ConsumerState<CreateTodoForm> {
     super.dispose();
   }
 
+  void onCreateBtnFn() {
+    if (!_formKey.currentState!.validate()) return;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
         key: _formKey,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextFormField(
               controller: _titleController,
@@ -68,7 +73,15 @@ class _CreateTodoFormState extends ConsumerState<CreateTodoForm> {
               decoration: const InputDecoration(
                 labelText: 'Description',
               ),
-            )
+            ),
+            const Row(
+              children: [
+                Column(
+                  children: [],
+                )
+              ],
+            ),
+            ElevatedButton(onPressed: () {}, child: const Text('Create'))
           ],
         ));
   }

@@ -1,5 +1,6 @@
 import 'package:clean_todo/features/todo/presentation/controllers/todo_controller.dart';
 import 'package:clean_todo/features/todo/presentation/states/todo_states.dart';
+import 'package:clean_todo/features/todo/presentation/widgets/create_todo_form.dart';
 import 'package:clean_todo/features/todo/presentation/widgets/todo_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,7 +20,12 @@ class _HomeContentState extends ConsumerState<HomeContent> {
   void _handleStates(TodoState state) {
     if (state is OnOpenCreateTodoFormState) {
       showModalBottomSheet(
-          context: context, builder: (context) => const Placeholder());
+          context: context,
+          builder: (context) => Padding(
+                padding: const EdgeInsets.all(8.0)
+                    .copyWith(bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: const CreateTodoForm(),
+              ));
     }
   }
 

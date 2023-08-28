@@ -4,7 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class TodoController extends StateNotifier<TodoState> {
   TodoController() : super(TodoInitialState());
 
-  void onOpenCreateTodoForm() {
+  void toggleCreateTodoForm() {
+    if (state == OnOpenCreateTodoFormState) TodoInitialState;
     state = OnOpenCreateTodoFormState();
   }
 }
