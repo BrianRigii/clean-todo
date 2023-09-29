@@ -26,8 +26,8 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<User> signUp(Map<String, dynamic> params) {
-    return _remoteDataSource.signUp(params);
+  SignUpEither signUp(Map<String, dynamic> params) {
+    throw UnimplementedError();
   }
 
   @override

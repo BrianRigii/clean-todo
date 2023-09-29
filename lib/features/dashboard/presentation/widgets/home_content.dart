@@ -14,7 +14,7 @@ class HomeContent extends ConsumerStatefulWidget {
 
 class _HomeContentState extends ConsumerState<HomeContent> {
   createTaskBtnFn() {
-    ref.read(todoControllerProvider.notifier).onOpenCreateTodoForm();
+    ref.read(todoControllerProvider.notifier).toggleCreateTodoForm();
   }
 
   void _handleStates(TodoState state) async {
@@ -27,7 +27,7 @@ class _HomeContentState extends ConsumerState<HomeContent> {
                 child: const CreateTodoForm(),
               ));
 
-      ref.read(todoControllerProvider.notifier).onCloseCreateTodoForm();
+      // ref.read(todoControllerProvider.notifier).onCloseCreateTodoForm();
     }
   }
 

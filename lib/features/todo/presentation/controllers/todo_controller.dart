@@ -5,9 +5,12 @@ class TodoController extends StateNotifier<TodoState> {
   TodoController() : super(TodoInitialState());
 
   void toggleCreateTodoForm() {
-    if (state is OnOpenCreateTodoFormState) state = TodoInitialState;
     state = OnOpenCreateTodoFormState();
   }
+
+  void closeCreateTodoForm() {}
+
+  void createTodo() {}
 }
 
 final todoControllerProvider =
