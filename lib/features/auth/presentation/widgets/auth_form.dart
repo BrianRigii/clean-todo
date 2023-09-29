@@ -65,15 +65,6 @@ class _LoginFormState extends ConsumerState<AuthForm> {
     ref.watch(authControllerProvider.notifier).onSignUp(signUpParams);
   }
 
-  void signInWithOtp() {
-    if (!_formKey.currentState!.validate()) return;
-    LoginParams loginParams = LoginParams(
-      email: _emailController.text,
-      password: _passwordController.text,
-    );
-    ref.watch(authControllerProvider.notifier).signUpWithOtp(loginParams.email);
-  }
-
   void toggelFormType() {
     if (currentAuthForm == AuthFormType.login) {
       setState(() {
@@ -85,6 +76,8 @@ class _LoginFormState extends ConsumerState<AuthForm> {
       });
     }
   }
+
+  TextStyle get headlineLarge => Theme.of(context).textTheme.headlineLarge!;
 
   bool get isLoginForm => currentAuthForm == AuthFormType.login;
 
@@ -101,7 +94,10 @@ class _LoginFormState extends ConsumerState<AuthForm> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text('Clean Todo'),
+            Text(
+              'Clean Todo',
+              style: headlineLarge,
+            ),
             const SizedBox(height: 4),
             const Text('Productivity Redefined'),
             const SizedBox(height: 8),

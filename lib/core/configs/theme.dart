@@ -5,6 +5,7 @@ ThemeData get lightTheme => ThemeData(
         primary: Color.fromRGBO(48, 132, 254, 1),
         secondary: Color.fromRGBO(251, 215, 162, 1),
       ),
+      textTheme: textTheme,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       useMaterial3: true,
       inputDecorationTheme: const InputDecorationTheme(
@@ -28,3 +29,8 @@ ThemeData get darkTheme => ThemeData(
       visualDensity: VisualDensity.adaptivePlatformDensity,
       useMaterial3: true,
     );
+
+TextTheme textTheme = const TextTheme(
+  headlineLarge:
+      TextStyle(fontSize: 14, fontWeight: FontWeight.bold, wordSpacing: 1.5),
+);

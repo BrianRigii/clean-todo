@@ -1,59 +1,37 @@
-import 'package:clean_todo/core/supabase/supabase_client.dart';
+import 'package:clean_todo/core/api/dio.dart';
+import 'package:clean_todo/features/auth/data/models/user_model.dart';
+import 'package:dio/dio.dart';
 import 'package:riverpod/riverpod.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 
 abstract class AuthRemoteDataSource {
-  Future<User> login(Map<String, dynamic> params);
-  Future<User> signUp(Map<String, dynamic> params);
-  Future signInWithOtp(String params);
-  Stream<AuthState> onAuthStateChange();
+  Future<UserModel> login(Map<String, dynamic> params);
+  Future<UserModel> signUp(Map<String, dynamic> params);
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  final SupabaseClient supabaseClient;
+  final Dio dio;
 
-  AuthRemoteDataSourceImpl({required this.supabaseClient});
+  AuthRemoteDataSourceImpl({required this.dio});
 
   @override
-  Future<User> login(Map<String, dynamic> params) async {
+  Future<UserModel> login(Map<String, dynamic> params) async {
     try {
-      final response = await supabaseClient.auth.signInWithPassword(
-          email: params['email'], password: params['password']);
-      return response.user!;
+      throw UnimplementedError();
     } catch (e) {
       rethrow;
     }
   }
 
   @override
-  Future<void> signInWithOtp(String email) async {
+  Future<UserModel> signUp(Map<String, dynamic> params) async {
     try {
-      await supabaseClient.auth.signInWithOtp(email: email);
-      return;
+      final response = await dio.post('/auth/signup', data: params);
+      return UserModel.fromJson(response.data);
     } catch (e) {
       rethrow;
     }
-  }
-
-  @override
-  Future<User> signUp(Map<String, dynamic> params) async {
-    try {
-      final response = await supabaseClient.auth
-          .signUp(email: params['email'], password: params['password']);
-      return response.user!;
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  @override
-  Stream<AuthState> onAuthStateChange() async* {
-    supabaseClient.auth.onAuthStateChange.listen((event) {
-      event;
-    });
   }
 }
 
 final authRemoteDataSourceProvider = Provider.autoDispose<AuthRemoteDataSource>(
-    (ref) => AuthRemoteDataSourceImpl(
-        supabaseClient: ref.watch(superbaseClientProvider)));
+    (ref) => AuthRemoteDataSourceImpl(dio: ref.watch(dioProvider)));
